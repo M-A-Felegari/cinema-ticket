@@ -1,0 +1,16 @@
+header{
+    color: var(--c-light);
+    width: 100%;
+    margin-top: 0.8rem;
+    display: flex;
+    justify-content: center;
+}
+header .logo{
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+header>div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

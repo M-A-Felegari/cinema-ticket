@@ -1,0 +1,11 @@
+.navbarButton{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: .2rem;
+}
+.navbarButton>p{
+    font-size: .6rem;
+    text-transform: uppercase;
+}
