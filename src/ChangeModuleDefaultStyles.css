@@ -1,0 +1,18 @@
+/* start swiper */
+.swiper-pagination-bullet{
+    background-color: var(--c-gray) !important;
+    opacity: 1 !important;
+}
+.swiper-pagination-bullet-active{
+    background-color: var(--c-secondary) !important;
+}
+.swiper-button-prev, .swiper-button-next{
+    color: var(--c-secondary) !important;
+}
+
+@media screen and (max-width: 428px){
+    .swiper-button-prev, .swiper-button-next{
+        display: none !important; /* to don't show the swiper button in small screen sizes*/
+    }
+}
+/* end swiper */

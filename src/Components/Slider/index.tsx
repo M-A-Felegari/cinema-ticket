@@ -1,6 +1,5 @@
 import React from 'react';
 import "index.css";
-import Carousel from "nuka-carousel";
 import sahneZaniPoster from "../../Assets/images/sahne-zani-poster.jpg";
 import sahneZaniPoster2 from "../../Assets/images/sahne-zani-poster2.jpg";
 
