@@ -14,11 +14,7 @@ interface SliderProps {
 
 function Slider({images}: SliderProps) {
     return (
-        <Carousel className="slider">
-            {images.map(image => (
-                <img src={image.src} alt={image.alt} className="image"/>
-            ))}
-        </Carousel>
+        <></>
     );
 }
 
