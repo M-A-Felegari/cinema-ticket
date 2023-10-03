@@ -14,6 +14,7 @@ main.HomeScreen{
 
 .carouselContainer{
     height: 25vh;
+    margin-top: .8rem;
 }
 .carousel{
     height: 100%;
@@ -33,4 +34,51 @@ main.HomeScreen{
     margin-top: .8rem;
     padding: 0 5%;
     height: 150px;
+}
+
+.shows{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.shows>.tabs{
+    width: 100%;
+    background-color: var(--c-primary-light);
+    display: flex;
+    justify-content: center;
+}
+.shows>.tabs>.tabsContainer{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    padding: .8rem 0;
+}
+.shows>.tabs .tab{
+    padding: .5rem 0;
+    background-color: transparent;
+    color: var(--c-text);
+    border: none;
+    text-transform: uppercase;
+    position: relative;
+    transition: all .4s ease;
+}
+.shows>.tabs .tab::after{
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    margin: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    background-color: var(--c-secondary);
+    height: 3px;
+    transition: all .4s ease;
+    border-radius: 2px;
+}
+.shows>.tabs .tab.active{
+    color: var(--c-secondary);
+}
+.shows>.tabs .tab.active.tab::after{
+    width: 100%;
 }

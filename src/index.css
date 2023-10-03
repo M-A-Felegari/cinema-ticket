@@ -5,7 +5,7 @@
     --c-secondary: #DEB01A;
     --c-primary-light:#2A2939;
     --c-gray:#6C6C78;
-    --c-sky:#8096B2;
+    --c-text:#8096B2;
     --c-light:#fff;
 }
 
@@ -19,6 +19,6 @@
 
 body{
     background-color: var(--c-primary);
-    color: var(--c-sky);
+    color: var(--c-text);
     font-family: 'Poppins', sans-serif;
 }
