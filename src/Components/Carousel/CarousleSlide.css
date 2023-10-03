@@ -11,6 +11,7 @@
     display: flex;
     align-items: center;
     gap: .5rem;
+    z-index: 2;
 }
 img{
     width: 100%;
@@ -19,7 +20,8 @@ img{
 }
 .carouselPriceBadge{
     left: 0;
-    background-color: transparent;
+    /*background-color: transparent;*/
+    background-color: var(--c-primary);
     border: 1px solid var(--c-secondary);
     color: var(--c-secondary);
 }

@@ -1,0 +1,36 @@
+main.HomeScreen{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.container{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.carouselContainer{
+    height: 25vh;
+}
+.carousel{
+    height: 100%;
+}
+
+.sliderContainer{
+    width: 100%;
+}
+.sliderContainer>p{
+    margin-left: 5%;
+    color: var(--c-light);
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+}
+.sliderContainer>.slider{
+    margin-top: .8rem;
+    padding: 0 5%;
+    height: 150px;
+}
