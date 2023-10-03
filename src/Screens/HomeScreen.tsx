@@ -24,15 +24,15 @@ function HomeScreen() {
     const slides = [
         {
             src: jokerBanner,
-            alt: "1",
+            id: "1",
             price: 10.75
         }, {
             src: sahneZaniPoster2,
-            alt: "2",
+            id: "2",
             price: 7
         }, {
             src: sahneZaniPoster,
-            alt: "1",
+            id: "3",
             price: 10
         }]
     const newReleases = [
@@ -78,11 +78,11 @@ function HomeScreen() {
                 <section className="carouselContainer">
                     <Swiper className="carousel" pagination={true} navigation={true} autoplay={true}
                             modules={[Navigation, Autoplay, Pagination]} centeredSlides={true} spaceBetween={5}
-                            loop={true} slide
+                            loop={true}
                     >
                         {slides.map(slide => (
-                            <SwiperSlide>
-                                <CarouselSlide imageSource={slide.src} imageAlt={slide.alt} price={slide.price}/>
+                            <SwiperSlide key={slide.id}>
+                                <CarouselSlide imageSource={slide.src} imageAlt={slide.id} price={slide.price}/>
                             </SwiperSlide>
                         ))}
                     </Swiper>
