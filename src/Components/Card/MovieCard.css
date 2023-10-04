@@ -1,0 +1,53 @@
+.movieCard{
+    display: flex;
+    height: 9rem;
+    background-color: var(--c-primary-light);
+}
+
+.movieCard>.posterContainer{
+    width: 5rem;
+    object-fit: cover;
+}
+.movieCard>.informationContainer{
+    width: calc(100% - 5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: .1rem;
+    padding: .3rem;
+}
+.movieCard>.informationContainer>.top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.movieCard>.informationContainer>.top>.information>.title{
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--c-light);
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.movieCard>.informationContainer>.top>.information>.extraInfo{
+    font-size: .6rem;
+}
+.movieCard>.informationContainer>.top>.star{
+    font-size: .7rem;
+    display: flex;
+    align-items: center;
+    gap: .2rem;
+}
+.movieCard>.informationContainer>.description{
+    font-size: .8rem;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.movieCard>.informationContainer>.price{
+    font-size: .7rem;
+    text-align: right;
+    color: var(--c-secondary);
+}

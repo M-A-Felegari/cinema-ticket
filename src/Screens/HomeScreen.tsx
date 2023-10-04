@@ -16,10 +16,11 @@ import {Navigation, Autoplay, Pagination} from 'swiper/modules';
 //end swiper imports
 import CarouselSlide from "../Components/Carousel/CarouselSlide";
 import {RiFireFill} from "react-icons/ri";
+import MovieCard from "../Components/Card/MovieCard";
 
 function HomeScreen() {
 
-    const [activeTab,setActiveTab] = useState(0)
+    const [activeTab, setActiveTab] = useState(0)
 
     const slides = [
         {
@@ -56,6 +57,41 @@ function HomeScreen() {
             id: 5,
             src: suspectXMiniPoster,
         }]
+    const movieCards = [
+        {
+            id:1,
+            imageSrc: jokerMiniPoster,
+            imageAlt: 'joker',
+            title: 'Joker',
+            year: 2019,
+            genre: 'action',
+            star: 8.5,
+            description: 'The Joker is noted for his clownlike appearance and sick humour. The Joker, initially portrayed as a small-time crook, was disfigured and driven insane by an accident with toxic chemicals. He was depicted with chalk-white skin, ruby-red lips permanently fixed in a demonic grin, and bright green hair.',
+            price: 10.5
+        },
+        {
+            id:2,
+            imageSrc: suspectXMiniPoster,
+            imageAlt: 'Suspect X',
+            title: 'Suspect X',
+            year: 2020,
+            genre: 'horror',
+            star: 7.4,
+            description: 'hen a single mom’s abusive husband ends up dead, her next door neighbor unexpectedly offers to help cover up the crime. But his perfect plan is thwarted when an eager cop shows up determined to get to the truth. Soon, they develop a love triangle that threatens to unravel the lives of everyone involved. Directed and written by Sujoy Ghosh (Kahaani, Badla), the Bollywood noir thriller Suspect X (aka Jaane Jaan) stars Kareena Kapoor Khan, Jaideep Ahlawat, and Vijay Varma.',
+            price: 8
+        },
+        {
+            id:3,
+            imageSrc: jokerMiniPoster,
+            imageAlt: 'joker',
+            title: 'Joker',
+            year: 2019,
+            genre: 'action',
+            star: 8.5,
+            description: 'The Joker is noted for his clownlike appearance and sick humour. The Joker, initially portrayed as a small-time crook, was disfigured and driven insane by an accident with toxic chemicals. He was depicted with chalk-white skin, ruby-red lips permanently fixed in a demonic grin, and bright green hair.',
+            price: 10.5
+        }
+    ]
 
     const tabs = [
         {
@@ -122,17 +158,32 @@ function HomeScreen() {
             <section className="shows">
                 <div className="tabs">
                     <div className="tabsContainer">
-                        {tabs.map(tab=>(
+                        {tabs.map(tab => (
                             <button
                                 key={tab.id}
-                                className={`tab ${activeTab === tab.id ? "active":null}`}
-                                onClick={()=>setActiveTab(tab.id)}
+                                className={`tab ${activeTab === tab.id ? "active" : null}`}
+                                onClick={() => setActiveTab(tab.id)}
                             >
                                 {tab.title}
                                 {/*TODO: when i contact to api i should put onclick method seprate and call contact with api in it*/}
                             </button>
                         ))}
                     </div>
+                </div>
+                <div className="movieCards">
+                    {movieCards.map(movie=>(
+                        <MovieCard
+                            key={movie.id}
+                            imageSrc={movie.imageSrc}
+                            imageAlt={movie.imageAlt}
+                            title={movie.title}
+                            year={movie.year}
+                            genre={movie.genre}
+                            star={movie.star}
+                            description={movie.description}
+                            price={movie.price}
+                        />
+                    ))}
                 </div>
             </section>
         </main>

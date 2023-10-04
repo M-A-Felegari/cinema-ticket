@@ -51,11 +51,9 @@ main.HomeScreen{
 .shows>.tabs>.tabsContainer{
     width: 90%;
     display: flex;
-    justify-content: space-between;
-    padding: .8rem 0;
-}
+    justify-content: space-between;}
 .shows>.tabs .tab{
-    padding: .5rem 0;
+    padding: 1.3rem 0;
     background-color: transparent;
     color: var(--c-text);
     border: none;
@@ -66,7 +64,7 @@ main.HomeScreen{
 .shows>.tabs .tab::after{
     content: '';
     position: absolute;
-    bottom: -3px;
+    bottom: .5rem;
     margin: auto;
     left: 50%;
     transform: translateX(-50%);
@@ -81,4 +79,11 @@ main.HomeScreen{
 }
 .shows>.tabs .tab.active.tab::after{
     width: 100%;
+}
+.shows>.movieCards{
+    margin-top: 1.3rem;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap: 1.5rem;
+    width: 90%;
 }
