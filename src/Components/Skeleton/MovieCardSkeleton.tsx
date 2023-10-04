@@ -11,7 +11,7 @@ function MovieCardSkeleton() {
                         <Skeleton circle={true} width='5rem' height='5rem'/>
                 </div>
                 <div className={styles.right}>
-                    <h1><Skeleton width={50}/></h1>
+                    <h1><Skeleton width={70}/></h1>
                     <p>
                         <Skeleton count={3} width='100%'/>
                     </p>
