@@ -1,12 +1,10 @@
 .navbar{
   position: fixed;
-  bottom: 1rem;
-  border-radius: 35px;
-  width: 80%;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 0;
+  width: 100%;
   padding: .3rem;
   background-color: var(--c-primary-light);
+  z-index: 10;
 }
 .navbar>ul{
   display: flex;

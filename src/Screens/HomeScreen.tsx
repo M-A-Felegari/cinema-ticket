@@ -17,10 +17,211 @@ import {Navigation, Autoplay, Pagination} from 'swiper/modules';
 import CarouselSlide from "../Components/Carousel/CarouselSlide";
 import {RiFireFill} from "react-icons/ri";
 import MovieCard from "../Components/Card/MovieCard";
+import {MovieCardSkeleton} from "../Components/Skeleton";
+
+type Movie = {
+    id: number
+    imageSrc: string
+    imageAlt: string,
+    title: string,
+    year: number,
+    genre: string,
+    star: number,
+    description: string
+    price: number
+} //TODO: split it into the Models folder
 
 function HomeScreen() {
 
-    const [activeTab, setActiveTab] = useState(0)
+    const enum Tab {
+        TodayShows,
+        Tomarrow,
+        ThisWeek
+    }
+    const getShows = (tab: Tab): Movie[] | null => {
+        switch (tab) {
+            case Tab.TodayShows:
+                return [
+                    {
+                        id: 1,
+                        imageSrc: jokerMiniPoster,
+                        imageAlt: 'joker',
+                        title: 'Joker',
+                        year: 2019,
+                        genre: 'action',
+                        star: 8.5,
+                        description: 'The Joker is noted for his clownlike appearance and sick humour. The Joker, initially portrayed as a small-time crook, was disfigured and driven insane by an accident with toxic chemicals. He was depicted with chalk-white skin, ruby-red lips permanently fixed in a demonic grin, and bright green hair.',
+                        price: 10.5
+                    },
+                    {
+                        id: 2,
+                        imageSrc: suspectXMiniPoster,
+                        imageAlt: 'Suspect X',
+                        title: 'Suspect X',
+                        year: 2020,
+                        genre: 'horror',
+                        star: 7.4,
+                        description: 'hen a single mom’s abusive husband ends up dead, her next door neighbor unexpectedly offers to help cover up the crime. But his perfect plan is thwarted when an eager cop shows up determined to get to the truth. Soon, they develop a love triangle that threatens to unravel the lives of everyone involved. Directed and written by Sujoy Ghosh (Kahaani, Badla), the Bollywood noir thriller Suspect X (aka Jaane Jaan) stars Kareena Kapoor Khan, Jaideep Ahlawat, and Vijay Varma.',
+                        price: 8
+                    },
+                    {
+                        id: 3,
+                        imageSrc: jokerMiniPoster,
+                        imageAlt: 'joker',
+                        title: 'Joker',
+                        year: 2019,
+                        genre: 'action',
+                        star: 8.5,
+                        description: 'The Joker is noted for his clownlike appearance and sick humour. The Joker, initially portrayed as a small-time crook, was disfigured and driven insane by an accident with toxic chemicals. He was depicted with chalk-white skin, ruby-red lips permanently fixed in a demonic grin, and bright green hair.',
+                        price: 10.5
+                    }
+                ]
+
+            case Tab.Tomarrow:
+                // return [
+                //     {
+                //         id: 3,
+                //         imageSrc: sahneZaniMiniPoster,
+                //         imageAlt: 'sahne zanu',
+                //         title: 'Sahne Zani',
+                //         year: 2023,
+                //         genre: 'history',
+                //         star: 4,
+                //         description: 'The Sahne zan is noted for his clownlike appearance and sick humour. The Joker, initially portrayed as a small-time crook, was disfigured and driven insane by an accident with toxic chemicals. He was depicted with chalk-white skin, ruby-red lips permanently fixed in a demonic grin, and bright green hair.',
+                //         price: 3.25
+                //     },
+                //     {
+                //         id: 2,
+                //         imageSrc: suspectXMiniPoster,
+                //         imageAlt: 'Suspect X',
+                //         title: 'Suspect X',
+                //         year: 2020,
+                //         genre: 'horror',
+                //         star: 7.4,
+                //         description: 'hen a single mom’s abusive husband ends up dead, her next door neighbor unexpectedly offers to help cover up the crime. But his perfect plan is thwarted when an eager cop shows up determined to get to the truth. Soon, they develop a love triangle that threatens to unravel the lives of everyone involved. Directed and written by Sujoy Ghosh (Kahaani, Badla), the Bollywood noir thriller Suspect X (aka Jaane Jaan) stars Kareena Kapoor Khan, Jaideep Ahlawat, and Vijay Varma.',
+                //         price: 8
+                //     },
+                //     {
+                //         id: 1,
+                //         imageSrc: jokerMiniPoster,
+                //         imageAlt: 'joker',
+                //         title: 'Joker',
+                //         year: 2019,
+                //         genre: 'action',
+                //         star: 8.5,
+                //         description: 'The Joker is noted for his clownlike appearance and sick humour. The Joker, initially portrayed as a small-time crook, was disfigured and driven insane by an accident with toxic chemicals. He was depicted with chalk-white skin, ruby-red lips permanently fixed in a demonic grin, and bright green hair.',
+                //         price: 10.5
+                //     }
+                // ]
+                return null;
+
+            case Tab.ThisWeek:
+                return [
+                    {
+                        id: 3,
+                        imageSrc: sahneZaniMiniPoster,
+                        imageAlt: 'sahne zanu',
+                        title: 'Sahne Zani',
+                        year: 2023,
+                        genre: 'history',
+                        star: 4,
+                        description: 'The Sahne zan is noted for his clownlike appearance and sick humour. The Joker, initially portrayed as a small-time crook, was disfigured and driven insane by an accident with toxic chemicals. He was depicted with chalk-white skin, ruby-red lips permanently fixed in a demonic grin, and bright green hair.',
+                        price: 3.25
+                    },
+                    {
+                        id: 2,
+                        imageSrc: suspectXMiniPoster,
+                        imageAlt: 'Suspect X',
+                        title: 'Suspect X',
+                        year: 2020,
+                        genre: 'horror',
+                        star: 7.4,
+                        description: 'hen a single mom’s abusive husband ends up dead, her next door neighbor unexpectedly offers to help cover up the crime. But his perfect plan is thwarted when an eager cop shows up determined to get to the truth. Soon, they develop a love triangle that threatens to unravel the lives of everyone involved. Directed and written by Sujoy Ghosh (Kahaani, Badla), the Bollywood noir thriller Suspect X (aka Jaane Jaan) stars Kareena Kapoor Khan, Jaideep Ahlawat, and Vijay Varma.',
+                        price: 8
+                    },
+                    {
+                        id: 1,
+                        imageSrc: jokerMiniPoster,
+                        imageAlt: 'joker',
+                        title: 'Joker',
+                        year: 2019,
+                        genre: 'action',
+                        star: 8.5,
+                        description: 'The Joker is noted for his clownlike appearance and sick humour. The Joker, initially portrayed as a small-time crook, was disfigured and driven insane by an accident with toxic chemicals. He was depicted with chalk-white skin, ruby-red lips permanently fixed in a demonic grin, and bright green hair.',
+                        price: 10.5
+                    },
+                    {
+                        id: 4,
+                        imageSrc: sahneZaniMiniPoster,
+                        imageAlt: 'sahne zanu',
+                        title: 'Sahne Zani',
+                        year: 2023,
+                        genre: 'history',
+                        star: 4,
+                        description: 'The Sahne zan is noted for his clownlike appearance and sick humour. The Joker, initially portrayed as a small-time crook, was disfigured and driven insane by an accident with toxic chemicals. He was depicted with chalk-white skin, ruby-red lips permanently fixed in a demonic grin, and bright green hair.',
+                        price: 3.25
+                    },
+                    {
+                        id: 5,
+                        imageSrc: suspectXMiniPoster,
+                        imageAlt: 'Suspect X',
+                        title: 'Suspect X',
+                        year: 2020,
+                        genre: 'horror',
+                        star: 7.4,
+                        description: 'hen a single mom’s abusive husband ends up dead, her next door neighbor unexpectedly offers to help cover up the crime. But his perfect plan is thwarted when an eager cop shows up determined to get to the truth. Soon, they develop a love triangle that threatens to unravel the lives of everyone involved. Directed and written by Sujoy Ghosh (Kahaani, Badla), the Bollywood noir thriller Suspect X (aka Jaane Jaan) stars Kareena Kapoor Khan, Jaideep Ahlawat, and Vijay Varma.',
+                        price: 8
+                    },
+                    {
+                        id: 6,
+                        imageSrc: jokerMiniPoster,
+                        imageAlt: 'joker',
+                        title: 'Joker',
+                        year: 2019,
+                        genre: 'action',
+                        star: 8.5,
+                        description: 'The Joker is noted for his clownlike appearance and sick humour. The Joker, initially portrayed as a small-time crook, was disfigured and driven insane by an accident with toxic chemicals. He was depicted with chalk-white skin, ruby-red lips permanently fixed in a demonic grin, and bright green hair.',
+                        price: 10.5
+                    },
+                    {
+                        id: 7,
+                        imageSrc: sahneZaniMiniPoster,
+                        imageAlt: 'sahne zanu',
+                        title: 'Sahne Zani',
+                        year: 2023,
+                        genre: 'history',
+                        star: 4,
+                        description: 'The Sahne zan is noted for his clownlike appearance and sick humour. The Joker, initially portrayed as a small-time crook, was disfigured and driven insane by an accident with toxic chemicals. He was depicted with chalk-white skin, ruby-red lips permanently fixed in a demonic grin, and bright green hair.',
+                        price: 3.25
+                    },
+                    {
+                        id: 8,
+                        imageSrc: suspectXMiniPoster,
+                        imageAlt: 'Suspect X',
+                        title: 'Suspect X',
+                        year: 2020,
+                        genre: 'horror',
+                        star: 7.4,
+                        description: 'hen a single mom’s abusive husband ends up dead, her next door neighbor unexpectedly offers to help cover up the crime. But his perfect plan is thwarted when an eager cop shows up determined to get to the truth. Soon, they develop a love triangle that threatens to unravel the lives of everyone involved. Directed and written by Sujoy Ghosh (Kahaani, Badla), the Bollywood noir thriller Suspect X (aka Jaane Jaan) stars Kareena Kapoor Khan, Jaideep Ahlawat, and Vijay Varma.',
+                        price: 8
+                    },
+                    {
+                        id: 9,
+                        imageSrc: jokerMiniPoster,
+                        imageAlt: 'joker',
+                        title: 'Joker',
+                        year: 2019,
+                        genre: 'action',
+                        star: 8.5,
+                        description: 'The Joker is noted for his clownlike appearance and sick humour. The Joker, initially portrayed as a small-time crook, was disfigured and driven insane by an accident with toxic chemicals. He was depicted with chalk-white skin, ruby-red lips permanently fixed in a demonic grin, and bright green hair.',
+                        price: 10.5
+                    }
+                ]
+        }
+    }
+
+    const [activeTab, setActiveTab] = useState(Tab.TodayShows)
+    const [movieCards,setMovieCards] = useState(()=>getShows(activeTab))
 
     const slides = [
         {
@@ -57,56 +258,25 @@ function HomeScreen() {
             id: 5,
             src: suspectXMiniPoster,
         }]
-    const movieCards = [
-        {
-            id:1,
-            imageSrc: jokerMiniPoster,
-            imageAlt: 'joker',
-            title: 'Joker',
-            year: 2019,
-            genre: 'action',
-            star: 8.5,
-            description: 'The Joker is noted for his clownlike appearance and sick humour. The Joker, initially portrayed as a small-time crook, was disfigured and driven insane by an accident with toxic chemicals. He was depicted with chalk-white skin, ruby-red lips permanently fixed in a demonic grin, and bright green hair.',
-            price: 10.5
-        },
-        {
-            id:2,
-            imageSrc: suspectXMiniPoster,
-            imageAlt: 'Suspect X',
-            title: 'Suspect X',
-            year: 2020,
-            genre: 'horror',
-            star: 7.4,
-            description: 'hen a single mom’s abusive husband ends up dead, her next door neighbor unexpectedly offers to help cover up the crime. But his perfect plan is thwarted when an eager cop shows up determined to get to the truth. Soon, they develop a love triangle that threatens to unravel the lives of everyone involved. Directed and written by Sujoy Ghosh (Kahaani, Badla), the Bollywood noir thriller Suspect X (aka Jaane Jaan) stars Kareena Kapoor Khan, Jaideep Ahlawat, and Vijay Varma.',
-            price: 8
-        },
-        {
-            id:3,
-            imageSrc: jokerMiniPoster,
-            imageAlt: 'joker',
-            title: 'Joker',
-            year: 2019,
-            genre: 'action',
-            star: 8.5,
-            description: 'The Joker is noted for his clownlike appearance and sick humour. The Joker, initially portrayed as a small-time crook, was disfigured and driven insane by an accident with toxic chemicals. He was depicted with chalk-white skin, ruby-red lips permanently fixed in a demonic grin, and bright green hair.',
-            price: 10.5
-        }
-    ]
 
     const tabs = [
         {
-            id: 0,
+            id: Tab.TodayShows,
             title: "Today shows"
         },
         {
-            id: 1,
+            id: Tab.Tomarrow,
             title: "Tomarrow"
         },
         {
-            id: 2,
+            id: Tab.ThisWeek,
             title: "this week"
         }
     ]
+    const selectTab = (tab: Tab): void => {
+        setActiveTab(tab)
+        setMovieCards(getShows(tab))
+    }
     return (
         <main className="HomeScreen">
             <div className="container">
@@ -162,7 +332,7 @@ function HomeScreen() {
                             <button
                                 key={tab.id}
                                 className={`tab ${activeTab === tab.id ? "active" : null}`}
-                                onClick={() => setActiveTab(tab.id)}
+                                onClick={() => selectTab(tab.id)}
                             >
                                 {tab.title}
                                 {/*TODO: when i contact to api i should put onclick method seprate and call contact with api in it*/}
@@ -171,7 +341,7 @@ function HomeScreen() {
                     </div>
                 </div>
                 <div className="movieCards">
-                    {movieCards.map(movie=>(
+                    {movieCards ? movieCards.map(movie => (
                         <MovieCard
                             key={movie.id}
                             imageSrc={movie.imageSrc}
@@ -183,7 +353,13 @@ function HomeScreen() {
                             description={movie.description}
                             price={movie.price}
                         />
-                    ))}
+                    )): (
+                        <>
+                            <MovieCardSkeleton/>
+                            <MovieCardSkeleton/>
+                            <MovieCardSkeleton/>
+                        </>
+                    )}
                 </div>
             </section>
         </main>
