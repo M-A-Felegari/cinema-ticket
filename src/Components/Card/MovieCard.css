@@ -14,7 +14,7 @@
     flex-direction: column;
     justify-content: space-between;
     gap: .1rem;
-    padding: .3rem;
+    padding: .5rem;
     margin-left: .2rem;
 }
 .movieCard>.informationContainer>.top{

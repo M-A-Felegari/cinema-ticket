@@ -22,3 +22,6 @@ body{
     color: var(--c-text);
     font-family: 'Poppins', sans-serif;
 }
+button,a{
+    -webkit-tap-highlight-color: transparent;
+}
