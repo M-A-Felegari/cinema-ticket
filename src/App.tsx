@@ -5,7 +5,7 @@ import Navbar from "./Components/navbar";
 
 function App() {
     return (
-        <div>
+        <div className="app">
             <Outlet/>
             <div className='marginToShowContentsBehindNavbar'></div>
             <Navbar/>

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./MovieCard.css"
 import {BsStarFill} from "react-icons/bs";
+import {Variants,motion} from "framer-motion";
 
 interface MovieCardProps {
+    id:number
     imageSrc: string
     imageAlt:string
     title: string
@@ -13,9 +15,24 @@ interface MovieCardProps {
     price: number
 }
 
-function MovieCard({imageSrc,imageAlt, title, year, genre, star, description, price}: MovieCardProps) {
+function MovieCard({id,imageSrc,imageAlt, title, year, genre, star, description, price}: MovieCardProps) {
     return (
-        <div className='movieCard'>
+        <motion.div
+            className='movieCard'
+            variants={{
+                closed: {
+                    scale:0.9,
+                    opacity:0
+                },
+                open:{
+                    scale:1,
+                    opacity:1,
+                    transition:{
+                        duration:0.4
+                    }
+                }
+            }}
+        >
             <div className="posterContainer">
                 <img src={imageSrc} alt={imageAlt}/>
             </div>
@@ -30,7 +47,7 @@ function MovieCard({imageSrc,imageAlt, title, year, genre, star, description, pr
                 <div className="description">{description}</div>
                 <div className="price">{price}$</div>
             </div>
-        </div>
+        </motion.div>
     );
 }
 

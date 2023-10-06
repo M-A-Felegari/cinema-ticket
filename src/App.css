@@ -1,3 +1,7 @@
 .marginToShowContentsBehindNavbar{
     height: 5rem;
 }
+.app{
+    width: 100vw;
+    overflow-x: hidden;
+}
