@@ -18,7 +18,7 @@ const tickets = [
         time: "17:30",
         price: 7.5,
         totalReservedTickets: 3,
-        isUsedTicket:false
+        isUsedTicket: false
     },
     {
         id: 122724575,
@@ -38,19 +38,33 @@ const tickets = [
 
 function TicketsScreen() {
     return (
-        <motion.main
+        <main
             className="ticketsScreen"
         >
-            <div className="ticketsContainer">
+            <motion.div
+                className="ticketsContainer"
+                variants={{
+                    loading: {},
+                    loaded: {
+                        transition: {
+                            delayChildren: 0.04,
+                            staggerChildren: 0.1
+                        }
+                    }
+                }}
+                animate={tickets ? "loaded" : "loading"}
+                initial="loading"
+            >
                 {tickets.map(ticket => (
                     <TicketCard id={ticket.id} isUsedTicket={ticket.isUsedTicket} imageSrc={ticket.imageSrc}
                                 imageAlt={ticket.imageAlt} title={ticket.title} year={ticket.year}
                                 genre={ticket.genre} star={ticket.star} date={ticket.date}
-                                time={ticket.time} price={ticket.price} totalReservedTickets={ticket.totalReservedTickets}
+                                time={ticket.time} price={ticket.price}
+                                totalReservedTickets={ticket.totalReservedTickets}
                     />
                 ))}
-            </div>
-        </motion.main>
+            </motion.div>
+        </main>
     );
 }
 

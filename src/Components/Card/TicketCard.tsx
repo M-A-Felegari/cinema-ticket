@@ -1,6 +1,8 @@
 import React from 'react';
 import './TicketCard.css'
 import {BsFillCalendarDateFill, BsFillClockFill, BsStarFill} from "react-icons/bs";
+import {motion} from "framer-motion";
+import {IoMdDoneAll} from "react-icons/io";
 
 interface TicketCardProps {
     id: number,
@@ -32,7 +34,22 @@ function TicketCard({
                         totalReservedTickets,
                     }: TicketCardProps) {
     return (
-        <div className="ticketCard">
+        <motion.div
+            className="ticketCard"
+            variants={{
+                loading: {
+                    scale:0.9,
+                    opacity:0
+                },
+                loaded:{
+                    scale:1,
+                    opacity:1,
+                    transition:{
+                        duration:0.4
+                    }
+                }
+            }}
+        >
                 {!isUsedTicket?(
                     <div className="top">
                         <p>Reserve ID:</p>
@@ -41,6 +58,10 @@ function TicketCard({
                 ):(
                     <div className="top usedTicket">
                         already used
+                        <IoMdDoneAll
+                            style={{transform:'translate(.3rem, .1rem)'}}
+                            fontSize='1.2rem'
+                        />
                     </div>
                 )}
             <div className="card">
@@ -53,7 +74,13 @@ function TicketCard({
                             <p className="title">{title}</p>
                             <p className="extraInfo">{year}-{genre}</p>
                         </div>
-                        <div className="star"><span>{star}</span> <BsStarFill color="var(--c-secondary)"/></div>
+                        <div className="star">
+                            <span>{star}</span>
+                            <BsStarFill
+                                color="var(--c-secondary)"
+                                style={{transform:'translateY(-.1rem)'}}
+                            />
+                        </div>
                     </div>
                     <div className="middle">
                         <p className="date"><BsFillCalendarDateFill style={{margin:'0 .3rem',transform: `translateY(.1rem)`}}/>{date}</p>
@@ -65,7 +92,7 @@ function TicketCard({
                 <p className='totalTickets'>{totalReservedTickets} {totalReservedTickets > 1 ? "tickets" : "ticket"}</p>
                 <p className="totalPrice">total: {totalReservedTickets * price}$</p>
             </div>
-        </div>
+        </motion.div>
     );
 }
 

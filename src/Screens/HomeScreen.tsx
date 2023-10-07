@@ -282,7 +282,7 @@ function HomeScreen() {
     }
 
     return (
-        <motion.main
+        <main
             className="HomeScreen"
         >
             <div className="container">
@@ -350,18 +350,17 @@ function HomeScreen() {
                     className="movieCards"
                     key={activeTab}
                     variants={{
-                        closed:{
+                        loading:{
                         },
-                        open:{
-                            opacity:1,
+                        loaded:{
                             transition:{
                                 delayChildren:0.04,
                                 staggerChildren:0.1
                             }
                         }
                     }}
-                    animate={movieCards ? "open" : "closed"}
-                    initial="closed"
+                    animate={movieCards ? "loaded" : "loading"}
+                    initial="loading"
                 >
                     {movieCards ? movieCards.map(movie => (
                         <MovieCard
@@ -385,7 +384,7 @@ function HomeScreen() {
                     )}
                 </motion.div>
             </section>
-        </motion.main>
+        </main>
     );
 }
 

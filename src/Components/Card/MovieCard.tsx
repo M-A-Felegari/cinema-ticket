@@ -20,11 +20,11 @@ function MovieCard({id,imageSrc,imageAlt, title, year, genre, star, description,
         <motion.div
             className='movieCard'
             variants={{
-                closed: {
+                loading: {
                     scale:0.9,
                     opacity:0
                 },
-                open:{
+                loaded:{
                     scale:1,
                     opacity:1,
                     transition:{
@@ -42,7 +42,13 @@ function MovieCard({id,imageSrc,imageAlt, title, year, genre, star, description,
                         <p className="title">{title}</p>
                         <p className="extraInfo">{year}-{genre}</p>
                     </div>
-                    <div className="star"><span>{star}</span> <BsStarFill color="var(--c-secondary)"/></div>
+                    <div className="star">
+                        <span>{star}</span>
+                        <BsStarFill
+                            color="var(--c-secondary)"
+                            style={{transform:'translateY(-.1rem)'}}
+                        />
+                    </div>
                 </div>
                 <div className="description">{description}</div>
                 <div className="price">{price}$</div>
