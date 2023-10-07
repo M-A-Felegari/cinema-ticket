@@ -3,43 +3,43 @@ import "./index.css";
 import {NavLink} from "react-router-dom";
 import {BiSolidHome, BiSolidUserCircle} from "react-icons/bi";
 import NavbarButton from "./NavbarButton";
-import {RiChatHistoryFill} from "react-icons/ri";
+import {FaTicketAlt} from "react-icons/fa";
+
+const navButtons = [
+    {
+        title: 'Home',
+        address: '/',
+        icon: BiSolidHome
+    },
+    {
+        title: 'Tickets',
+        address: '/tickets',
+        icon: FaTicketAlt
+    },
+    {
+        title: 'Profile',
+        address: '/profile',
+        icon: BiSolidUserCircle
+    },
+]
 
 function Index() {
     return (
         <nav className="navbar">
             <ul>
-                {/*TODO:make this in an object*/}
-                <li>
-                    <NavLink to="/"
-                             className={({isActive}) => (isActive ? 'active' : '')}
-                    ><NavbarButton
-                        icon={<BiSolidHome
-                            style={{fontSize: 20}}
-                        />}
-                        title="Home"/>
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/history"
-                             className={({isActive}) => (isActive ? 'active' : '')}
-                    ><NavbarButton
-                        icon={<RiChatHistoryFill
-                            style={{fontSize: 20}}
-                        />}
-                        title="History"/>
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/profile"
-                             className={({isActive}) => (isActive ? 'active' : '')}
-                    ><NavbarButton
-                        icon={<BiSolidUserCircle
-                            style={{fontSize: 20}}
-                        />}
-                        title="Profile"/>
-                    </NavLink>
-                </li>
+                {navButtons.map(navButton => (
+                    <li key={navButton.title}>
+                        <NavLink
+                            to={navButton.address}
+                            className={({isActive}) => (isActive ? 'active' : '')}
+                        >
+                            <NavbarButton
+                                icon={<navButton.icon style={{fontSize: 20}}/>}
+                                title={navButton.title}
+                            />
+                        </NavLink>
+                    </li>
+                ))}
             </ul>
         </nav>
     );

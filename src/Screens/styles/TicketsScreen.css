@@ -1,0 +1,17 @@
+main.ticketsScreen{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.ticketsContainer{
+    margin-top: 1.5rem;
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    gap: 1.5rem;
+    overflow: hidden;
+}

@@ -1,0 +1,105 @@
+.ticketCard{
+    background-color: var(--c-primary-light);
+    width: 100%;
+    border-radius: 1.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.ticketCard::before, .ticketCard::after{
+    content: '';
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    background-color: var(--c-primary);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.ticketCard::before{
+    left: -2rem;
+}
+.ticketCard::after{
+    right: -2rem;
+}
+.ticketCard>.top{
+    display: flex;
+    padding: .5rem 1rem;
+    width: 100%;
+    justify-content: space-between;
+}
+.ticketCard>.top.usedTicket{
+    justify-content: center;
+    text-transform: uppercase;
+    color: var(--c-secondary);
+}
+.ticketCard>.top>p:last-child{
+    color: var(--c-secondary);
+}
+.ticketCard>.card{
+    width: 100%;
+    height: 8rem;
+    display: flex;
+    gap: .3rem;
+    border-top: 3px dashed var(--c-primary);
+    border-bottom: 3px dashed var(--c-primary);
+    padding: .5rem 0;
+}
+.ticketCard>.card>.posterContainer{
+    width: 6rem;
+    object-fit: fill;
+}
+.ticketCard>.card>.information{
+    width: calc(100% - 6rem);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 1rem;
+}
+.ticketCard>.card>.information>.top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ticketCard>.card>.information>.top>.left>.title{
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--c-light);
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ticketCard>.card>.information>.top>.left>.extraInfo{
+    font-size: .8rem;
+}
+.ticketCard>.card>.information>.top>.star{
+    font-size: .8rem;
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    padding-right: 2rem;
+}
+.ticketCard>.card>.information>.middle{
+    display: flex;
+    gap: .3rem;
+}
+.ticketCard>.card>.information>.middle>.date{
+    color: var(--c-text);
+}
+.ticketCard>.card>.information>.bottom{
+    text-align: right;
+    color: var(--c-secondary);
+}
+
+
+.ticketCard>.bottom{
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem 1rem;
+}
+.ticketCard>.bottom>.totalPrice{
+    color: var(--c-secondary);
+}
