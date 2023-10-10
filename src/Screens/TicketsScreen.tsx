@@ -71,7 +71,9 @@ function TicketsScreen() {
                 initial="loading"
             >
                 {tickets.map(ticket => (
-                    <TicketCard id={ticket.id} isUsedTicket={ticket.isUsedTicket} imageSrc={ticket.imageSrc}
+                    <TicketCard
+                        key={ticket.id}
+                        id={ticket.id} isUsedTicket={ticket.isUsedTicket} imageSrc={ticket.imageSrc}
                                 imageAlt={ticket.imageAlt} title={ticket.title} year={ticket.year}
                                 genre={ticket.genre} star={ticket.star} date={ticket.date}
                                 time={ticket.time} price={ticket.price}
