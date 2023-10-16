@@ -1,0 +1,45 @@
+.noticeBox {
+    background-color: var(--c-primary-light);
+}
+
+.topBar {
+    background-color: var(--c-secondary);
+    color: var(--c-primary-light);
+    padding: .3rem .5rem;
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+}
+
+.main {
+    padding: 1rem .7rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.imageContainer {
+    text-align: center;
+}
+
+.imageContainer > img {
+    width: 60%;
+}
+
+.imageContainer > .description {
+
+}
+
+.footer {
+    text-align: right;
+}
+
+/*default footer's buttons style*/
+.footer button {
+    padding: .5rem;
+    /*background-color: var(--c-secondary);*/
+    background-color: transparent;
+    border: none;
+    color: var(--c-secondary);
+    text-transform: uppercase;
+}
