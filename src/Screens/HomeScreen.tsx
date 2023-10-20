@@ -18,7 +18,7 @@ import CarouselSlide from "../Components/Carousel/CarouselSlide";
 import {RiFireFill} from "react-icons/ri";
 import MovieCard from "../Components/Card/MovieCard";
 import {MovieCardSkeleton} from "../Components/Skeleton";
-import {Variants,motion} from "framer-motion";
+import {Variants, motion} from "framer-motion";
 
 type Movie = {
     id: number
@@ -32,6 +32,8 @@ type Movie = {
     price: number
 } //TODO: split it into the Models folder
 
+const MotionSwiper = motion(Swiper);
+
 function HomeScreen() {
 
     const enum Tab {
@@ -39,6 +41,7 @@ function HomeScreen() {
         Tomarrow,
         ThisWeek
     }
+
     const getShows = (tab: Tab): Movie[] | null => {
         switch (tab) {
             case Tab.TodayShows:
@@ -221,7 +224,7 @@ function HomeScreen() {
     }
 
     const [activeTab, setActiveTab] = useState(Tab.TodayShows)
-    const [movieCards,setMovieCards] = useState(()=>getShows(activeTab))
+    const [movieCards, setMovieCards] = useState(() => getShows(activeTab))
 
     const slides = [
         {
@@ -276,10 +279,11 @@ function HomeScreen() {
     const selectTab = (tab: Tab): void => {
         setMovieCards(null);
         setActiveTab(tab)
-        setTimeout(()=>{
+        setTimeout(() => {
             setMovieCards(getShows(tab))
-        },1000)
+        }, 1000)
     }
+
 
     return (
         <main
@@ -305,7 +309,7 @@ function HomeScreen() {
                 <p>
                     <RiFireFill style={{color: 'var(--c-secondary)'}}/> New Released
                 </p>
-                <Swiper
+                <MotionSwiper
                     className="slider"
                     slidesPerView={3}
                     spaceBetween={20}
@@ -323,13 +327,42 @@ function HomeScreen() {
                             slidesPerView: 7
                         }
                     }}
+
+                    variants={{
+                        loading: {},
+                        loaded: {
+                            transition: {
+                                delayChildren: 0.04,
+                                staggerChildren: 0.1
+                            }
+                        }
+                    }}
+                    animate={"loaded"}
+                    initial="loading"
                 >
                     {newReleases.map(newRelease => (
                         <SwiperSlide key={newRelease.id}>
-                            <img src={newRelease.src} alt="newRelease"/>
+                            <motion.img
+                                src={newRelease.src}
+                                alt="newRelease"
+                                className='movieCard'
+                                variants={{
+                                    loading: {
+                                        scale: 0.9,
+                                        opacity: 0
+                                    },
+                                    loaded: {
+                                        scale: 1,
+                                        opacity: 1,
+                                        transition: {
+                                            duration: 0.4
+                                        }
+                                    }
+                                }}
+                            />
                         </SwiperSlide>
                     ))}
-                </Swiper>
+                </MotionSwiper>
             </section>
             <section className="shows">
                 <div className="tabs">
@@ -350,12 +383,11 @@ function HomeScreen() {
                     className="movieCards"
                     key={activeTab}
                     variants={{
-                        loading:{
-                        },
-                        loaded:{
-                            transition:{
-                                delayChildren:0.04,
-                                staggerChildren:0.1
+                        loading: {},
+                        loaded: {
+                            transition: {
+                                delayChildren: 0.04,
+                                staggerChildren: 0.1
                             }
                         }
                     }}
@@ -375,11 +407,11 @@ function HomeScreen() {
                             description={movie.description}
                             price={movie.price}
                         />
-                    )): (
+                    )) : (
                         <>
-                            <MovieCardSkeleton/>
-                            <MovieCardSkeleton/>
-                            <MovieCardSkeleton/>
+                            {[0, 1, 2].map(i => (
+                                <MovieCardSkeleton key={i}/>
+                            ))}
                         </>
                     )}
                 </motion.div>

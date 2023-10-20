@@ -1,11 +1,12 @@
 import React from 'react';
 import NoticeBox from "../Components/NoticeBox";
 import loginImage from "../Assets/images/login_character.svg"
+import './styles/ProfileScreen.css';
 
 function ProfileScreen() {
     return (
-        <div style={{width:'100%',display:'flex',flexDirection:'column',alignItems:'center'}}>
-            <div style={{width:'90%',marginTop:'1.5rem'}}>
+        <main className='profileScreen'>
+            <div className='noticeBoxContainer'>
                 <NoticeBox
                     imageSrc={loginImage}
                     imageAlt="login"
@@ -13,7 +14,7 @@ function ProfileScreen() {
                     footer={(<button>LogIn</button>)}
                 />
             </div>
-        </div>
+        </main>
     );
 }
 
