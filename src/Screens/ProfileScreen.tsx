@@ -2,10 +2,18 @@ import React from 'react';
 import NoticeBox from "../Components/NoticeBox";
 import loginImage from "../Assets/images/login_character.svg"
 import './styles/ProfileScreen.css';
+import { motion } from 'framer-motion';
 
 function ProfileScreen() {
+
     return (
-        <main className='profileScreen'>
+        <motion.main
+            className='profileScreen'
+            initial={{ x:'-100%'}}
+            animate={{ x:0}}
+            exit={{x:'100%',transition:{duration:.1}}}
+            transition={{ duration: .1,delay:.1 }}
+        >
             <div className='noticeBoxContainer'>
                 <NoticeBox
                     imageSrc={loginImage}
@@ -14,7 +22,7 @@ function ProfileScreen() {
                     footer={(<button>LogIn</button>)}
                 />
             </div>
-        </main>
+        </motion.main>
     );
 }
 

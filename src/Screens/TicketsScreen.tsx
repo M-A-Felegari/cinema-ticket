@@ -53,8 +53,12 @@ const tickets = [
 
 function TicketsScreen() {
     return (
-        <main
-            className="ticketsScreen"
+        <motion.main
+            className="HomeScreen"
+            initial={{ x:'-100%'}}
+            animate={{ x:0}}
+            exit={{x:'100%',transition:{duration:.1}}}
+            transition={{ duration: .1,delay:.1 }}
         >
             <motion.div
                 className="ticketsContainer"
@@ -81,7 +85,7 @@ function TicketsScreen() {
                     />
                 ))}
             </motion.div>
-        </main>
+        </motion.main>
     );
 }
 

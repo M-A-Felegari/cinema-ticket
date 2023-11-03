@@ -286,8 +286,12 @@ function HomeScreen() {
 
 
     return (
-        <main
+        <motion.main
             className="HomeScreen"
+            initial={{ x:'-100%'}}
+            animate={{ x:0}}
+            exit={{x:'100%',transition:{duration:.1}}}
+            transition={{ duration: .1,delay:.1 }}
         >
             <div className="container">
                 <HomeHeader/>
@@ -416,7 +420,7 @@ function HomeScreen() {
                     )}
                 </motion.div>
             </section>
-        </main>
+        </motion.main>
     );
 }
 
