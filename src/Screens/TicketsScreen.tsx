@@ -55,10 +55,10 @@ function TicketsScreen() {
     return (
         <motion.main
             className="HomeScreen"
-            initial={{ x:'-100%'}}
-            animate={{ x:0}}
-            exit={{x:'100%',transition:{duration:.1}}}
-            transition={{ duration: .1,delay:.1 }}
+            // initial={{ x:'-100%'}}
+            // animate={{ x:0}}
+            // // exit={{x:'100%',transition:{duration:.02}}}
+            // transition={{ duration: .5}}
         >
             <motion.div
                 className="ticketsContainer"
